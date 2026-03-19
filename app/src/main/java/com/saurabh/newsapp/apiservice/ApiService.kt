@@ -1,17 +1,34 @@
 package com.saurabh.newsapp.apiservice
 
 import com.saurabh.newsapp.apiservice.models.NewsResponse
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 import retrofit2.http.GET
 import retrofit2.http.Query
+import javax.inject.Inject
+import javax.inject.Singleton
 
-interface ApiService {
+@Singleton
+class ApiService @Inject constructor(
+    private val client: HttpClient
+) {
 
-    @GET("api/1/latest")
     suspend fun getNews(
-        @Query("apikey") apiKey: String,
-        @Query("language") language: String = "hi,mr,en",
-        @Query("country") country: String = "in",
-        @Query("category") category: String = "breaking",
-        @Query("page") page: String? = null
-    ): NewsResponse
+        apiKey: String,
+        language: String = "hi,mr,en",
+        country: String = "in",
+        category: String = "breaking",
+        page: String? = null
+    ): NewsResponse {
+
+        return client.get("api/1/latest") {
+            parameter("apikey", apiKey)
+            parameter("language", language)
+            parameter("country", country)
+            parameter("category", category)
+            page?.let { parameter("page", it) }
+        }.body()
+    }
 }

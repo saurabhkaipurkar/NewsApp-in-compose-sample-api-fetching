@@ -8,8 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsViewmodel @Inject constructor(private val newsRepository: NewsRepository) : ViewModel() {
-
+class NewsViewmodel @Inject constructor(newsRepository: NewsRepository) : ViewModel() {
 
     val breakingNews = newsRepository.getBreakingNews().cachedIn(viewModelScope)
 }

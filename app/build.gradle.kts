@@ -81,7 +81,7 @@ dependencies {
     implementation("androidx.hilt:hilt-navigation-compose:1.3.0")
 
     // DataStore
-    implementation("androidx.datastore:datastore-preferences:1.2.0")
+    implementation("androidx.datastore:datastore-preferences:1.2.1")
 
     implementation("androidx.room:room-runtime:2.8.4")
     implementation("androidx.room:room-ktx:2.8.4")
@@ -94,4 +94,14 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:3.0.0")
     implementation("com.squareup.okhttp3:okhttp:5.3.2")
     implementation("com.squareup.okhttp3:logging-interceptor:5.3.2")
+
+    implementation("io.ktor:ktor-client-core:3.4.1")
+    implementation("io.ktor:ktor-client-okhttp:3.4.1")
+
+// Serialization
+    implementation("io.ktor:ktor-client-content-negotiation:3.4.1")
+    implementation("io.ktor:ktor-serialization-gson:3.4.1")
+
+// Logging
+    implementation("io.ktor:ktor-client-logging:3.4.1")
 }

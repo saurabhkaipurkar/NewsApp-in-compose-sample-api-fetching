@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -50,7 +49,7 @@ fun NewsApp(viewModel: NewsViewmodel = hiltViewModel()) {
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(16.dp),
+        contentPadding = PaddingValues(8.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -129,7 +128,7 @@ fun NewsCard(news: NewsArticle?) {
                 }
 
                 Text(
-                    text = news.sourceName ?: "",
+                    text = news.sourceName,
                     style = MaterialTheme.typography.labelSmall,
                     modifier = Modifier.padding(top = 8.dp)
                 )
